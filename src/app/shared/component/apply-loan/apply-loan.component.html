@@ -1,0 +1,95 @@
+<mat-stepper linear>
+    <mat-step [stepControl]="personalDetailsForm" >
+        <form [formGroup]="personalDetailsForm">
+            <ng-template matStepLabel>Personal Detail Form</ng-template>
+            <mat-form-field appearance="fill">
+                <mat-label>Name</mat-label>
+                <input matInput formControlName="name" placeholder="Name" required>
+                <mat-error>
+                    Name is required field.
+                </mat-error>
+            </mat-form-field>
+
+            <mat-form-field appearance="fill">
+                <mat-label>Email</mat-label>
+                <input matInput formControlName="email" placeholder="Email" required>
+                <mat-error>
+                    Email is required field.
+                </mat-error>
+            </mat-form-field>
+
+            <mat-form-field appearance="fill">
+                <mat-label>Phone</mat-label>
+                <input matInput formControlName="phone" placeholder="Phone" required>
+                <mat-error>
+                    Phone is required field.
+                </mat-error>
+            </mat-form-field>
+
+            <mat-form-field appearance="fill">
+                <mat-label>Date Of Birth</mat-label>
+                <input matInput formControlName="dob" placeholder="Date Of Birth"  [matDatepicker]="dobpicker"required>
+
+                <mat-datepicker-toggle matSuffix [for]="dobpicker"></mat-datepicker-toggle>
+  <mat-datepicker #dobpicker></mat-datepicker>
+
+                <mat-error>
+                    Date Of Birth is required field.
+                </mat-error>
+            </mat-form-field>
+
+            <mat-form-field appearance="fill">
+                <mat-label>Gender</mat-label>
+                <mat-select matInput formControlName="gender" placeholder="Gender" required>
+                    <mat-option value="Male">Male</mat-option>
+                    <mat-option value="Female">Female</mat-option>
+                    <mat-option value="Others">Others</mat-option>
+                </mat-select>
+                <mat-error>
+                    Gender is required field.
+                </mat-error>
+            </mat-form-field>
+
+             <mat-form-field appearance="fill">
+                <mat-label>Marrital Status</mat-label>
+                <mat-select matInput formControlName="marritalStatus" placeholder="Marrital Status" required>
+                    <mat-option value="Single">Single</mat-option>
+                    <mat-option value="Married">Married</mat-option>
+                    <!-- <mat-option value="Others">Others</mat-option> -->
+                </mat-select>
+                <mat-error>
+                    Marrital Status is required field.
+                </mat-error>
+            </mat-form-field>
+
+            <button mat-button type="button" matStepperNext>Next</button>
+        </form>
+    </mat-step>
+
+    <mat-step [stepControl]="documentUploadForm">
+        <form [formGroup]="documentUploadForm">
+            <ng-template matStepLabel>
+                Document Upload Form
+            </ng-template>
+
+            <mat-form-field>
+                <mat-label>Adhar</mat-label>
+                <input matInput formControlName="adhar">
+                <mat-error>
+                    Adhar is required field.
+                </mat-error>
+            </mat-form-field>
+
+            <mat-form-field>
+                <mat-label>PAN</mat-label>
+                <input matInput formControlName="pan">
+                <mat-error>
+                    PAN is required field.
+                </mat-error>
+            </mat-form-field>
+
+              <button mat-button matStepperPrevious>Back</button>
+      <button mat-button>Reset</button>
+        </form>
+    </mat-step>
+</mat-stepper>
