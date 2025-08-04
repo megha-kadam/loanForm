@@ -40,9 +40,6 @@ export class CustomValidators{
                     invalidDOBValidator : `You must be at least 21 year old.`
                 }
             }
-
-
-            return null
         }
     }
 }
