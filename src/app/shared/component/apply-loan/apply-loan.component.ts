@@ -1,5 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { CustomRegex } from '../../const/validators';
+import { CustomValidators } from '../../validators/customValidators';
 
 @Component({
   selector: 'app-apply-loan',
@@ -12,26 +14,28 @@ export class ApplyLoanComponent implements OnInit {
 
   constructor(private fb : FormBuilder) { 
     this.personalDetailsForm = this.fb.group({
-      name : [null, [Validators.required]],
-      email : [null, [Validators.required]],
-      phone : [null, [Validators.required]],
-      dob : [null, [Validators.required]],
+      name : [null, [Validators.required, Validators.pattern(CustomRegex.name)]],
+      email : [null, [Validators.required, Validators.pattern(CustomRegex.email)]],
+      phone : [null, [Validators.required, CustomValidators.phoneNumValidator]],
+      dob : [null, [Validators.required, CustomValidators.DateOfBirthValidator()]],
       gender : [null, [Validators.required]],
       marritalStatus : [null, [Validators.required]],
     })
 
 
     this.documentUploadForm = this.fb.group({
-      adhar : [null, [Validators.required]],
+      adhar : [null, [Validators.required, Validators.pattern(CustomRegex.onlyNums)]],
       pan : [null, [Validators.required]]
     })
   }
 
-  ngOnInit(): void {
+  onSubmitForm(){
     console.log(this.personalDetailsForm.value);
-    console.log(this.documentUploadForm.value);
     
-    
+  }
+
+  ngOnInit(): void {
+ 
   }
 
 }

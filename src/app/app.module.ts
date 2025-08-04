@@ -6,6 +6,7 @@ import { NoopAnimationsModule } from '@angular/platform-browser/animations';
 import { ApplyLoanComponent } from './shared/component/apply-loan/apply-loan.component';
 import { MaterialModule } from './shared/material/material';
 import { ReactiveFormsModule } from '@angular/forms';
+import { RouterModule } from '@angular/router';
 
 @NgModule({
   declarations: [
@@ -16,7 +17,8 @@ import { ReactiveFormsModule } from '@angular/forms';
     BrowserModule,
     MaterialModule,
     NoopAnimationsModule,
-    ReactiveFormsModule
+    ReactiveFormsModule,
+    // RouterModule
   ],
   providers: [],
   bootstrap: [AppComponent]

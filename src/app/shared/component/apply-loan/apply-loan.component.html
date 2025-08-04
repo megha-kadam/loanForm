@@ -1,6 +1,6 @@
 <mat-stepper linear>
     <mat-step [stepControl]="personalDetailsForm" >
-        <form [formGroup]="personalDetailsForm">
+        <form [formGroup]="personalDetailsForm" (ngSubmit)="onSubmitForm()">
             <ng-template matStepLabel>Personal Detail Form</ng-template>
             <mat-form-field appearance="fill">
                 <mat-label>Name</mat-label>
@@ -21,8 +21,13 @@
             <mat-form-field appearance="fill">
                 <mat-label>Phone</mat-label>
                 <input matInput formControlName="phone" placeholder="Phone" required>
-                <mat-error>
+
+                <mat-error *ngIf="personalDetailsForm.get('phone')?.hasError('required')">
                     Phone is required field.
+                </mat-error>
+
+                <mat-error *ngIf="personalDetailsForm.get('phone')?.dirty && personalDetailsForm.get('phone')?.hasError('phoneNumValidator')">
+                    {{personalDetailsForm.get('phone')?.errors?.['phoneNumValidator']}}
                 </mat-error>
             </mat-form-field>
 
@@ -35,6 +40,10 @@
 
                 <mat-error>
                     Date Of Birth is required field.
+                </mat-error>
+
+                <mat-error *ngIf="personalDetailsForm.get('dob')?.dirty && personalDetailsForm.get('dob')?.hasError('DateOfBirthValidator')">
+                    {{personalDetailsForm.get('dob')?.errors?.['DateOfBirthValidator']}}
                 </mat-error>
             </mat-form-field>
 
